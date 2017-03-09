@@ -1,0 +1,51 @@
+{{#if items.length}}
+<div data-metro-id="{{id}}" class="metro-panels">
+    <ul>
+      {{#each items}}
+      <li class="panels {{#if linkAction}}linked{{/if}} {{sizeClass}}" data-metro-item-id="{{id}}">
+        <div class="metro-image" style="background-color: {{color}};{{#if imageConf}} background-image: url('{{imageConf.url}}'){{/if}}"><p class="hidden"></p></div>
+        <div class="metro-desc">
+          {{#if linkAction}}
+          <div class="linked-icon"><i class="fa fa-share" aria-hidden="true"></i></div>
+          {{/if}}
+          <p class="metro-title">{{title}}</p>
+          {{#if description}}<p>{{nl2br description}}</p>{{/if}}
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+</div>
+{{else}}
+<div class="metro-panels placeholder">
+    <ul>
+      <li class="panels size22">
+        <div class="metro-image" style="background-color: #c7c7c7;"><p class="hidden"></p></div>
+        <div class="metro-desc">
+          <p class="metro-title">Panel large 1</p>
+          <p>This is a default panel size "Large", edit your metro's settings to configure your content.</p>
+        </div>
+      </li>
+      <li class="panels size21">
+        <div class="metro-image" style="background-color: #c7c7c7;"><p class="hidden"></p></div>
+        <div class="metro-desc">
+          <p class="metro-title">Panel medium 2</p>
+          <p>This is a default panel size "Medium", edit your metro's settings to configure your content.</p>
+        </div>
+      </li>
+      <li class="panels size11">
+        <div class="metro-image" style="background-color: #c7c7c7;"><p class="hidden"></p></div>
+        <div class="metro-desc">
+          <p class="metro-title">Panel small 3</p>
+          <p>This is a default panel size "Small".</p>
+        </div>
+      </li>
+      <li class="panels size11">
+        <div class="metro-image" style="background-color: #c7c7c7;"><p class="hidden"></p></div>
+        <div class="metro-desc">
+          <p class="metro-title">Panel small 4</p>
+          <p>This is a default panel size "Small".</p>
+        </div>
+      </li>
+    </ul>
+</div>
+{{/if}}

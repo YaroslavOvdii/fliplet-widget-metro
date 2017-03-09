@@ -1,0 +1,49 @@
+{
+  "name": "List (Metro)",
+  "package": "com.fliplet.metro",
+  "version": "1.0.0",
+  "icon": "img/icon.png",
+  "tags": ["type:component","category:panels"],
+  "provider_only": false,
+  "references": [
+    "items.$.linkAction.page:page"
+  ],
+  "html_tag": "div",
+  "providers": [
+    "com.fliplet.link",
+    "com.fliplet.image-manager"
+  ],
+  "interface": {
+    "dependencies": [
+      "fliplet-core",
+      "fliplet-studio-ui",
+      "jquery-ui",
+      "lodash",
+      "handlebars",
+      "bootstrap"
+    ],
+    "assets": [
+      "vendor/color-picker.js",
+      "vendor/color-picker.css",
+      "vendor/jquery-ui.css",
+      "js/interface.templates.js",
+      "js/interface.js",
+      "css/interface.css"
+    ]
+  },
+  "build": {
+    "dependencies": [
+      "fliplet-core",
+      "bootstrap",
+      "font-awesome",
+      "lodash",
+      "handlebars"
+    ],
+    "assets": [
+      "vendor/freewall.js",
+      "js/metroInit.js",
+      "js/build.js",
+      "css/build.css"
+    ]
+  }
+}
