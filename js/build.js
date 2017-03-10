@@ -1,6 +1,7 @@
 window.uiFreewallVertical = {};
-function init() {
-  Fliplet.Navigator.onReady().then(function(){
+Fliplet.Navigator.onReady().then(function(){
+
+  function init() {
     window.uiFreewallVertical = new UIFreewallVertical();
     UIFreewallVertical.loadMetro();
 
@@ -15,14 +16,15 @@ function init() {
             Fliplet.Navigate.to(itemData.linkAction);
         }
     });
-  });
-}
-
-var debounceLoad = _.debounce(init, 500);
-
-Fliplet.Studio.onEvent(function (event) {
-  if (event.detail.event === 'reload-widget-instance') {
-    debounceLoad();
   }
+
+  var debounceLoad = _.debounce(init, 500);
+
+  Fliplet.Studio.onEvent(function (event) {
+    if (event.detail.event === 'reload-widget-instance') {
+      debounceLoad();
+    }
+  });
+  init();
+
 });
-init();

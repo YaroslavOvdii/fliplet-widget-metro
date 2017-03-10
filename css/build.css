@@ -1,10 +1,11 @@
-.metro-panels.placeholder {
-    opacity: 0;
+.metro-placeholder.placeholder {
+    opacity: 0.5;
     cursor: pointer;
     -webkit-user-select: none !important;
     -ms-user-select: none !important;
     user-select: none !important;
     -webkit-user-modify: read-only !important;
+    text-align: center;
 }
 /* METRO */
 .metro-panels {
@@ -40,10 +41,6 @@
 
 .metro-panels.ready {
     opacity: 1;
-}
-
-.metro-panels.ready.placeholder {
-    opacity: 0.5;
 }
 
 .metro-panels ul {
