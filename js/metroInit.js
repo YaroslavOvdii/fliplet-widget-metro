@@ -1,19 +1,19 @@
-UIFreewallVertical = (function(config) {
+UIFreewallVertical = (function() {
 
 	var data;
 
 	function UIFreewallVertical(config) {
 		data = config;
-		UIFreewallVertical.setupFreewalVertical();
-		window.addEventListener( 'resize', UIFreewallVertical.setupFreewalVertical, false );
+		UIFreewallVertical.setupFreewalVertical(data);
+		window.addEventListener( 'resize', UIFreewallVertical.setupFreewalVertical(data), false );
 	}
 
 	UIFreewallVertical.loadMetro = function() {
-		$('.metro-panels').addClass('ready');
+		$('[data-metro-id="'+data.id+'"]').addClass('ready');
 	};
 
-	UIFreewallVertical.setupFreewalVertical = function() {
-		var wall = new freewall(".metro-panels");
+	UIFreewallVertical.setupFreewalVertical = function(data) {
+		var wall = new freewall('[data-metro-id="'+data.id+'"]');
     var cellWidth;
     var cellHeight;
 		wall.reset({
