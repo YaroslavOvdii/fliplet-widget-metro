@@ -1,5 +1,9 @@
-UIFreewallVertical = (function() {
-	function UIFreewallVertical() {
+UIFreewallVertical = (function(config) {
+
+	var data;
+
+	function UIFreewallVertical(config) {
+		data = config;
 		UIFreewallVertical.setupFreewalVertical();
 		window.addEventListener( 'resize', UIFreewallVertical.setupFreewalVertical, false );
 	}
@@ -62,8 +66,8 @@ UIFreewallVertical = (function() {
 					return cellHeight;
 				}
 		  },
-			gutterY : 10,
-			gutterX : 10,
+			gutterY : data.enableGap ? 10 : 0,
+			gutterX : data.enableGap ? 10 : 0,
       onResize: function() {
         wall.fitWidth();
       }

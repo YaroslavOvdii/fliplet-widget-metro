@@ -183,6 +183,9 @@ $(".tab-content")
     })
     .on('change', '.panel-size', function() {
       debounceSave();
+    })
+    .on('change', '[name="enable_gap"]', function() {
+      debounceSave();
     });
 
 var contentHeight = $('body > .form-horizontal').outerHeight();
@@ -198,6 +201,17 @@ $('body > .form-horizontal').scroll(function(event) {
 		$('body').removeClass('controls-sticky-on');
 	}
 });
+
+// Chech radio Buttons
+if (typeof data.enableGap !== "undefined") {
+  if (data.enableGap) {
+    $('#gap-yes').prop('checked',true);
+  } else {
+    $('#gap-no').prop('checked',true);
+  }
+} else {
+  $('#gap-yes').prop('checked',true);
+}
 
 // FUNCTIONS
 function initLinkProvider(item){
@@ -397,6 +411,8 @@ function save(notifyComplete){
     item.size = $('#list-item-size-'+item.id).val();
     item.sizeClass = panelSizeMap[$('#list-item-size-'+item.id).val()];
   });
+
+  data.enableGap = $('[name="enable_gap"]:checked').val() === "enable-gap" ? true : false;
 
   if(notifyComplete) {
     // forward save request to all providers
