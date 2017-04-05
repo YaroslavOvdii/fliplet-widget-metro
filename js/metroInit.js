@@ -9,11 +9,11 @@ UIFreewallVertical = (function() {
 	}
 
 	UIFreewallVertical.loadMetro = function() {
-		$('[data-metro-id="'+data.id+'"]').addClass('ready');
+		$('[data-metro-id="'+data.id+'"]:not([data-mce-bogus] [data-metro-id="'+data.id+'"])').addClass('ready');
 	};
 
 	UIFreewallVertical.setupFreewalVertical = function(data) {
-		var wall = new freewall('[data-metro-id="'+data.id+'"]');
+		var wall = new freewall('[data-metro-id="'+data.id+'"]:not([data-mce-bogus] [data-metro-id="'+data.id+'"])');
     var cellWidth;
     var cellHeight;
 		wall.reset({
@@ -70,15 +70,17 @@ UIFreewallVertical = (function() {
 			gutterX : data.enableGap ? 10 : 0,
       onResize: function() {
         wall.fitWidth();
+				wall.refresh();
       }
 		});
 
 		wall.fitWidth();
+		wall.refresh();
 
 		function addClass() {
 			if (Modernizr.android) {
 				setTimeout(function(){
-					$('.metro-panels').addClass('ready');
+					$('div:not("[data-mce-bogus]") .metro-panels').addClass('ready');
 					setTimeout(function(){
 						$('body').css({ transform: "translateZ(1px)" }).css({ transform: "translateZ(0)" });
 					}, 300 );

@@ -3,9 +3,9 @@ ui.uiFreewallVertical = {};
 
 function init(){
   Fliplet.Navigator.onReady().then(function(){
-    $('[data-metro-id]').each(function(i, el){
+    $('.metro-panels:not("[data-mce-bogus] .metro-panels")').each(function(i, el){
       var $container = $(el);
-      var id = $(this).data('metro-id');
+      var id = $container.data('metro-id');
       var config = Fliplet.Widget.getData(id);
 
       ui.uiFreewallVertical[id] = new UIFreewallVertical(config);
@@ -14,9 +14,9 @@ function init(){
       $('.linked[data-metro-item-id]').click(function (event) {
           event.preventDefault();
 
-          var data = Fliplet.Widget.getData($(this).parents('[data-metro-id]').data('metro-id'));
+          var data = Fliplet.Widget.getData($container.parents('[data-metro-id]').data('metro-id'));
 
-          var itemData = _.find(data.items,{id: $(this).data('metro-item-id')});
+          var itemData = _.find(data.items,{id: $container.data('metro-item-id')});
 
           if(!_.isUndefined(itemData) && (!_.isUndefined(itemData.linkAction) && !_.isEmpty(itemData.linkAction))) {
               Fliplet.Navigate.to(itemData.linkAction);
