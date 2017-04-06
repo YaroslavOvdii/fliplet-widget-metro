@@ -13,10 +13,11 @@ function init(){
 
       $('.linked[data-metro-item-id]').click(function (event) {
           event.preventDefault();
+          var itemID = $(this).data('metro-item-id')
 
           var data = Fliplet.Widget.getData($container.parents('[data-metro-id]').data('metro-id'));
 
-          var itemData = _.find(data.items,{id: $container.data('metro-item-id')});
+          var itemData = _.find(data.items,{id: itemID});
 
           if(!_.isUndefined(itemData) && (!_.isUndefined(itemData.linkAction) && !_.isEmpty(itemData.linkAction))) {
               Fliplet.Navigate.to(itemData.linkAction);
