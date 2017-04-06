@@ -15,7 +15,7 @@ function init(){
           event.preventDefault();
           var itemID = $(this).data('metro-item-id')
 
-          var data = Fliplet.Widget.getData($container.parents('[data-metro-id]').data('metro-id'));
+          var data = Fliplet.Widget.getData($container.data('metro-id'));
 
           var itemData = _.find(data.items,{id: itemID});
 
