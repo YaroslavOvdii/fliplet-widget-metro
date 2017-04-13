@@ -120,33 +120,33 @@
 }
 /* METRO SIZES */
 .panels.size11 {
-  width: 135px;
-  height: 135px;
+  width: 140px;
+  height: 140px;
 }
 
 .panels.size21 {
-  width: 280px;
-  height: 135px;
+  width: 290px;
+  height: 140px;
 }
 
 .panels.size22 {
-  width: 280px;
-  height: 280px;
+  width: 290px;
+  height: 290px;
 }
 @media (min-width: 400px) {
   .panels.size11 {
-    width: 150px;
-    height: 150px;
+    width: 155px;
+    height: 155px;
   }
 
   .panels.size21 {
-    width: 310px;
-    height: 150px;
+    width: 320px;
+    height: 155px;
   }
 
   .panels.size22 {
-    width: 310px;
-    height: 310px;
+    width: 320px;
+    height: 320px;
   }
 }
 @media (min-width: 640px) {
