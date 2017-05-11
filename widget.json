@@ -6,7 +6,8 @@
   "tags": ["type:component","category:panels"],
   "provider_only": false,
   "references": [
-    "items.$.linkAction.page:page"
+    "items.$.linkAction.page:page",
+    "items.$.imageConf.id:mediaFile"
   ],
   "html_tag": "div",
   "providers": [
