@@ -55,32 +55,23 @@
                     </div>
                     <div class="col-sm-8">
                       <label for="list-item-size-{{id}}" class="select-proxy-display">
-                                          <select name="panelSize-{{id}}" id="list-item-size-{{id}}" data-label="select" class="hidden-select form-control panel-size">
-                                            <option value="Small">Small</option>
-                                            <option value="Medium">Medium</option>
-                                            <option value="Large">Large</option>
-                                          </select>
-                                          <span class="icon fa fa-chevron-down"></span>
-                                          <span class="select-value-proxy">{{#if size}}{{size}}{{else}}Small{{/if}}</span>
-                                        </label>
+                        <select name="panelSize-{{id}}" id="list-item-size-{{id}}" data-label="select" class="hidden-select form-control panel-size">
+                          <option value="Small">Small</option>
+                          <option value="Medium">Medium</option>
+                          <option value="Large">Large</option>
+                        </select>
+                        <span class="icon fa fa-chevron-down"></span>
+                        <span class="select-value-proxy">{{#if size}}{{size}}{{else}}Small{{/if}}</span>
+                      </label>
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <div class="col-sm-4 control-label">
-                      <label for="list-item-link-{{id}}">Link</label>
-                    </div>
-                    <div class="col-sm-8">
-                      <div class="btn btn-default list-item-set-link {{#if linkAction}} hidden{{/if}}">Add Link</div>
-                      <div class="btn btn-link text-danger link-remove {{#unless linkAction}} hidden {{/unless}}">Remove Link</div>
-                      <div class="add-link"></div>
-                    </div>
-                  </div>
+                  <div class="add-link"></div>
 
                   <h2><small>Configure panel background</small></h2>
                   <div class="row">
                     <div class="col-xs-12">
-                      <p class="help-block">Adding an image will override the color chosen. Whoever if the image has transparency, the color will be shown underneath.</p>
+                      <p class="help-block">Adding an image will override the chosen colour chosen. However if the image has transparency, the colour will be shown underneath.</p>
                     </div>
                   </div>
 

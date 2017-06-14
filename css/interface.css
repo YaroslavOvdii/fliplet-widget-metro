@@ -11,7 +11,6 @@ body {
   border: 0;
   width: 100%;
   background-color: transparent;
-  padding: 15px;
 }
 
 #action {
@@ -351,6 +350,12 @@ textarea.form-control {
 
 .add-image {
   float: left;
+}
+
+.thumb-holder {
+  height: 44px;
+  display: flex;
+  align-items: center;
 }
 
 .thumb-image {
