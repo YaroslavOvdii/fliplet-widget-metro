@@ -70,13 +70,17 @@ UIFreewallVertical = (function() {
       gutterX: data.enableGap ? 10 : 0,
       onResize: function() {
         wall.fitWidth();
-        wall.refresh();
-        location.reload();
       }
     });
 
-    wall.fitWidth();
-    wall.refresh();
+    var images = wall.container.find('.panels img');
+    if (images.length) {
+      images.find('img').load(function() {
+        wall.fitWidth();
+      });
+    } else {
+      wall.fitWidth();
+    }
 
     function addClass() {
       if (Modernizr.android) {
