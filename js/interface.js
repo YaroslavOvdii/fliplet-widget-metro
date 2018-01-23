@@ -396,7 +396,7 @@ Fliplet.Widget.onSaveRequest(function() {
   }
 });
 
-function save(notifyComplete) {
+function save(notifyComplete, dragStop) {
   _.forEach(data.items, function(item) {
     item.description = $('#list-item-desc-' + item.id).val();
     item.title = $('#list-item-title-' + item.id).val();
