@@ -15,7 +15,6 @@ if (_.isUndefined(data.items)) {
   data.items = [];
 }
 _.forEach(data.items, function(item) {
-  initLinkProvider(item);
   initColorPicker(item);
   initSizeSelect(item);
 });
@@ -180,6 +179,18 @@ $(".tab-content")
     save();
   })
   .on('show.bs.collapse', '.panel-collapse', function() {
+    // Get item ID / Get provider / Get item
+    var itemID = $(this).parents('.panel').data('id');
+    var itemProvider = _.find(linkPromises, function(provider) {
+      return provider.id === itemID;
+    });
+    var item = _.find(data.items, function(item) {
+      return item.id === itemID;
+    });
+    // Init the link provider when the accordion opens
+    if (!itemProvider && item) {
+      initLinkProvider(item);
+    }
     $(this).siblings('.panel-heading').find('.fa-chevron-right').removeClass('fa-chevron-right').addClass('fa-chevron-down');
   })
   .on('hide.bs.collapse', '.panel-collapse', function() {
