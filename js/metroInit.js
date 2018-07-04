@@ -68,7 +68,7 @@ UIFreewallVertical = (function() {
       },
       gutterY: data.enableGap ? 10 : 0,
       gutterX: data.enableGap ? 10 : 0,
-      rightToLeft: typeof data.rightToLeft !== 'undefined' ? data.rightToLeft : false,
+      rightToLeft: $('html[dir="rtl"]').length ? true : false,
       onResize: function() {
         wall.fitWidth();
       }
