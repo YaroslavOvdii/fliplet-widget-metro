@@ -231,17 +231,6 @@ if (typeof data.enableGap !== "undefined") {
   $('#gap-yes').prop('checked', true);
 }
 
-// Chech radio Buttons
-if (typeof data.rightToLeft !== "undefined") {
-  if (data.rightToLeft) {
-    $('#right-to-left-yes').prop('checked', true);
-  } else {
-    $('#right-to-left-no').prop('checked', true);
-  }
-} else {
-  $('#right-to-left-no').prop('checked', true);
-}
-
 // FUNCTIONS
 function initLinkProvider(item) {
 
@@ -428,7 +417,6 @@ function save(notifyComplete, dragStop) {
   });
 
   data.enableGap = $('[name="enable_gap"]:checked').val() === "enable-gap" ? true : false;
-  data.rightToLeft = $('[name="enable_right_to_left"]:checked').val() === "enable-yes" ? true : false;
 
   // forward save request to all providers
   linkPromises.forEach(function(promise) {
