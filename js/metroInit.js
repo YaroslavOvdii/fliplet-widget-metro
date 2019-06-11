@@ -5,6 +5,11 @@ UIFreewallVertical = (function() {
   function UIFreewallVertical(config) {
     data = config;
     UIFreewallVertical.setupFreewalVertical(data);
+    // Appearance change Hook
+    Fliplet.Hooks.on('appearanceChanged', function () {
+      UIFreewallVertical.setupFreewalVertical(data);
+    });
+    // Resize handler
     window.addEventListener('resize', UIFreewallVertical.setupFreewalVertical(data), false);
   }
 
