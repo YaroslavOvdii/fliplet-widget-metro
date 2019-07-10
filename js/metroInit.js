@@ -25,7 +25,7 @@ UIFreewallVertical = (function() {
       selector: '.panels',
       cellW: function() {
 
-        var width = $('body').width();
+        var width = $('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])').parent().width();
 
         if (width >= 1300) {
           cellWidth = 330;
@@ -49,7 +49,7 @@ UIFreewallVertical = (function() {
       },
       cellH: function() {
 
-        var width = $('body').width();
+        var width = $('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])').parent().width();
 
         if (width >= 1300) {
           cellHeight = 330;
