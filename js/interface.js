@@ -294,6 +294,7 @@ function initImageProvider(item) {
         $('[data-id="' + item.id + '"] .add-image-holder').find('.thumb-holder').addClass('hidden');
       }
 
+      Fliplet.Widget.resetSaveButtonLabel();
       imageProvider = null;
     }
   });
