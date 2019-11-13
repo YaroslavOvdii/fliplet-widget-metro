@@ -5,6 +5,9 @@ var data = Fliplet.Widget.getData() || {
   },
   linkPromises = [];
 
+var page = Fliplet.Widget.getPage();
+var omitPages = page ? [page.id] : [];
+
 var panelSizeMap = {
   "Small": "size11",
   "Medium": "size21",
@@ -232,6 +235,7 @@ function initLinkProvider(item) {
 
   item.linkAction = item.linkAction || {};
   item.linkAction.provId = item.id;
+  item.linkAction.omitPages = omitPages;
 
   var linkActionProvider = Fliplet.Widget.open('com.fliplet.link', {
     // If provided, the iframe will be appended here,
@@ -267,7 +271,7 @@ function initImageProvider(item) {
     type: 'image',
     autoSelectOnUpload: true
   };
-  
+
   imageProvider = Fliplet.Widget.open('com.fliplet.file-picker', {
     // Also send the data I have locally, so that
     // the interface gets repopulated with the same stuff
@@ -288,7 +292,7 @@ function initImageProvider(item) {
     if (event.data === 'cancel-button-pressed') {
       Fliplet.Widget.toggleCancelButton(true);
       imageProvider.close();
-      
+
       if (_.isEmpty(item.imageConf)) {
         $('[data-id="' + item.id + '"] .add-image-holder').find('.add-image').text('Add image');
         $('[data-id="' + item.id + '"] .add-image-holder').find('.thumb-holder').addClass('hidden');
