@@ -1,37 +1,49 @@
 window.ui = window.ui || {}
 ui.uiFreewallVertical = {};
 
-function init(){
-  Fliplet.Navigator.onReady().then(function(){
-    $('.metro-panels:not("[data-mce-bogus] .metro-panels")').each(function(i, el){
-      var $container = $(el);
-      var id = $container.data('metro-id');
-      var config = Fliplet.Widget.getData(id);
+Fliplet.Widget.instance('metro', function (data) {
+  var $container = $(this);
 
-      ui.uiFreewallVertical[id] = new UIFreewallVertical(config);
-      UIFreewallVertical.loadMetro();
+  function authenticateImages() {
+    _.forEach(data.items, function (item) {
+      if (!_.get(item, 'imageConf.url') || !Fliplet.Media.isRemoteUrl(item.imageConf.url)) {
+        return;
+      }
 
-      $('.linked[data-metro-item-id]').click(function (event) {
-          event.preventDefault();
-          var itemID = $(this).data('metro-item-id')
-
-          var data = Fliplet.Widget.getData($container.data('metro-id'));
-
-          var itemData = _.find(data.items,{id: itemID});
-
-          if(!_.isUndefined(itemData) && (!_.isUndefined(itemData.linkAction) && !_.isEmpty(itemData.linkAction))) {
-              Fliplet.Navigate.to(itemData.linkAction);
-          }
+      $container.find('[data-metro-item-id="' + item.id + '"] .metro-image').css({
+        backgroundImage: 'url(' + Fliplet.Media.authenticate(item.imageConf.url) + ')'
       });
     });
-  });
-}
-
-var debounceLoad = _.debounce(init, 500);
-
-Fliplet.Studio.onEvent(function (event) {
-  if (event.detail.event === 'reload-widget-instance') {
-    debounceLoad();
   }
+
+  function init() {
+    var id = $container.data('metro-id');
+
+    ui.uiFreewallVertical[id] = new UIFreewallVertical(data);
+    UIFreewallVertical.loadMetro();
+
+    $container.on('click', '.linked[data-metro-item-id]', function (event) {
+      event.preventDefault();
+
+      var itemID = $(this).data('metro-item-id')
+      var itemData = _.find(data.items, { id: itemID });
+
+      if (!_.isUndefined(_.get(itemData, 'linkAction'))
+        && !_.isEmpty(_.get(itemData, 'linkAction'))) {
+        Fliplet.Navigate.to(itemData.linkAction);
+      }
+    });
+    authenticateImages();
+  }
+
+  var debounceLoad = _.debounce(init, 500);
+
+  Fliplet().then(function () {
+    Fliplet.Studio.onEvent(function (event) {
+      if (event.detail.event === 'reload-widget-instance') {
+        debounceLoad();
+      }
+    });
+    init();
+  });
 });
-init();
