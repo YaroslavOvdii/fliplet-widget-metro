@@ -49,6 +49,7 @@ setTimeout(function() {
     axis: 'y',
     start: function(event, ui) {
       dragging = true;
+      
       var itemId = $(ui.item).data('id');
       var itemProvider = _.find(linkPromises, function(provider) {
         return provider.id === itemId;
