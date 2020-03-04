@@ -1,4 +1,4 @@
-window.ui = window.ui || {}
+window.ui = window.ui || {};
 ui.uiFreewallVertical = {};
 
 Fliplet.Widget.instance('metro', function (data) {
@@ -25,7 +25,7 @@ Fliplet.Widget.instance('metro', function (data) {
     $container.on('click', '.linked[data-metro-item-id]', function (event) {
       event.preventDefault();
 
-      var itemID = $(this).data('metro-item-id')
+      var itemID = $(this).data('metro-item-id');
       var itemData = _.find(data.items, { id: itemID });
 
       if (!_.isUndefined(_.get(itemData, 'linkAction'))
