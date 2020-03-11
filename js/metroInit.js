@@ -65,7 +65,7 @@ UIFreewallVertical = (function() {
         } else if (width >= 1200) {
           cellHeight = 310;
           return cellHeight;
-        } else if (width >= 1014) {
+        } else if (width >= 1024) {
           cellHeight = 230;
           return cellHeight;
         } else if (width >= 640) {
@@ -82,6 +82,7 @@ UIFreewallVertical = (function() {
       gutterY: data.enableGap ? 10 : 0,
       gutterX: data.enableGap ? 10 : 0,
       rightToLeft: $('html[dir="rtl"]').length ? true : false,
+      cacheSize: false,
       onResize: function() {
         wall.fitWidth();
       }
