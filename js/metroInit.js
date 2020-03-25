@@ -19,6 +19,13 @@ UIFreewallVertical = (function() {
 
     // Resize handler
     window.addEventListener('resize', UIFreewallVertical.setupFreewalVertical(data), false);
+
+    // Reload desktop screen
+    window.addEventListener('message', function(event) {
+      if (event.data.event === 'set-preview-device' && event.data.platform === 'web') {
+        Fliplet.Widget.emit('reload-widget-instance');
+      }
+    });
   }
 
   UIFreewallVertical.loadMetro = function() {
