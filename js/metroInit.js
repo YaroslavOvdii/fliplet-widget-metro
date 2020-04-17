@@ -1,5 +1,4 @@
 UIFreewallVertical = (function() {
-
   var data;
 
   function UIFreewallVertical(config) {
@@ -8,12 +7,12 @@ UIFreewallVertical = (function() {
     UIFreewallVertical.setupFreewalVertical(data);
 
     // Appearance changes Hook
-    Fliplet.Hooks.on('appearanceChanged', function () {
+    Fliplet.Hooks.on('appearanceChanged', function() {
       UIFreewallVertical.setupFreewalVertical(data);
     });
 
     // Appearance file changed Hook
-    Fliplet.Hooks.on('appearanceFileChanged', function () {
+    Fliplet.Hooks.on('appearanceFileChanged', function() {
       UIFreewallVertical.setupFreewalVertical(data);
     });
 
@@ -63,7 +62,6 @@ UIFreewallVertical = (function() {
         }
       },
       cellH: function() {
-
         var width = $('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])').parent().width();
 
         if (width >= 1300) {
@@ -110,9 +108,9 @@ UIFreewallVertical = (function() {
           $('div:not("[data-mce-bogus]") .metro-panels').addClass('ready');
           setTimeout(function() {
             $('body').css({
-              transform: "translateZ(1px)"
+              transform: 'translateZ(1px)'
             }).css({
-              transform: "translateZ(0)"
+              transform: 'translateZ(0)'
             });
           }, 300);
         }, 500);
@@ -121,5 +119,4 @@ UIFreewallVertical = (function() {
   };
 
   return UIFreewallVertical;
-
 })();
