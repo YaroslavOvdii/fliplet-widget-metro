@@ -1,29 +1,26 @@
 // VARS
 var widgetId = Fliplet.Widget.getDefaultId();
-var data = Fliplet.Widget.getData() || {
-    items: []
-  },
-  linkPromises = [];
-
+var data = Fliplet.Widget.getData() || { items: [] };
+var linkPromises = [];
 var page = Fliplet.Widget.getPage();
 var omitPages = page ? [page.id] : [];
 
 var panelSizeMap = {
-  "Small": "size11",
-  "Medium": "size21",
-  "Large": "size22"
+  'Small': 'size11',
+  'Medium': 'size21',
+  'Large': 'size22'
 };
 
 if (_.isUndefined(data.items)) {
   data.items = [];
 }
+
 _.forEach(data.items, function(item) {
   initColorPicker(item);
   initSizeSelect(item);
 });
 
 var accordionCollapsed = false;
-
 var $accordionContainer = $('#accordion');
 
 function tpl(name) {
@@ -31,7 +28,6 @@ function tpl(name) {
 }
 
 var $testElement = $('#testelement');
-
 var debounceSave = _.debounce(save, 500);
 
 // Indicate dragging state
@@ -40,8 +36,8 @@ var dragging = false;
 setTimeout(function() {
   // SORTING PANELS
   $('.panel-group').sortable({
-    handle: ".panel-heading",
-    cancel: ".icon-delete",
+    handle: '.panel-heading',
+    cancel: '.icon-delete',
     tolerance: 'pointer',
     revert: 150,
     placeholder: 'panel panel-default placeholder tile',
@@ -49,7 +45,7 @@ setTimeout(function() {
     axis: 'y',
     start: function(event, ui) {
       dragging = true;
-      
+
       var itemId = $(ui.item).data('id');
       var itemProvider = _.find(linkPromises, function(provider) {
         return provider.id === itemId;
@@ -79,7 +75,7 @@ setTimeout(function() {
 
       ui.item.removeClass('focus');
 
-      var sortedIds = $(".panel-group").sortable("toArray", {
+      var sortedIds = $('.panel-group').sortable('toArray', {
         attribute: 'data-id'
       });
       data.items = _.sortBy(data.items, function(item) {
@@ -91,7 +87,7 @@ setTimeout(function() {
 
       save(false, true);
     },
-    sort: function(event, ui) {
+    sort: function() {
       $('.panel-group').sortable('refresh');
       $('.tab-content').trigger('scroll');
     }
@@ -102,11 +98,10 @@ checkPanelLength();
 buttonControls();
 
 // EVENTS
-$(".tab-content")
+$('.tab-content')
   .on('click', '.icon-delete', function() {
-
-    var $item = $(this).closest("[data-id], .panel"),
-      id = $item.data('id');
+    var $item = $(this).closest('[data-id], .panel');
+    var id = $item.data('id');
 
     _.remove(data.items, {
       id: id
@@ -123,12 +118,9 @@ $(".tab-content")
     checkPanelLength();
   })
   .on('click', '.add-image', function() {
-
-    var $item = $(this).closest("[data-id], .panel"),
-      id = $item.data('id'),
-      item = _.find(data.items, {
-        id: id
-      });
+    var $item = $(this).closest('[data-id], .panel');
+    var id = $item.data('id');
+    var item = _.find(data.items, {id: id });
 
     initImageProvider(item);
 
@@ -138,12 +130,9 @@ $(".tab-content")
     }
   })
   .on('click', '.image-remove', function() {
-
-    var $item = $(this).closest("[data-id], .panel"),
-      id = $item.data('id'),
-      item = _.find(data.items, {
-        id: id
-      });
+    var $item = $(this).closest('[data-id], .panel');
+    var id = $item.data('id');
+    var item = _.find(data.items, { id: id });
 
     item.imageConf = null;
     $(this).parents('.add-image-holder').find('.add-image').text('Add image');
@@ -175,7 +164,7 @@ $(".tab-content")
     item.id = makeid(8);
     item.linkAction = null;
     item.title = 'Panel item ' + ($('#accordion .panel').length + 1);
-    item.description = "";
+    item.description = '';
     data.items.push(item);
 
     addListItem(item);
@@ -219,7 +208,7 @@ $(".tab-content")
 var contentHeight = $('body > .form-horizontal').outerHeight();
 var tabPaneTopPadding = 78;
 
-$('body > .form-horizontal').scroll(function(event) {
+$('body > .form-horizontal').scroll(function() {
   var tabContentScrollPos = Math.abs($('.tab-pane-content').position().top - tabPaneTopPadding);
   var tabPaneHeight = tabPaneTopPadding + $('.tab-pane-content').height();
 
@@ -231,7 +220,7 @@ $('body > .form-horizontal').scroll(function(event) {
 });
 
 // Chech radio Buttons
-if (typeof data.enableGap !== "undefined") {
+if (typeof data.enableGap !== 'undefined') {
   if (data.enableGap) {
     $('#gap-yes').prop('checked', true);
   } else {
@@ -243,7 +232,6 @@ if (typeof data.enableGap !== "undefined") {
 
 // FUNCTIONS
 function initLinkProvider(item) {
-
   item.linkAction = item.linkAction || {};
   item.linkAction.provId = item.id;
   item.linkAction.omitPages = omitPages;
@@ -321,7 +309,7 @@ function initImageProvider(item) {
   imageProvider.then(function(data) {
     if (data.data) {
       item.imageConf = data.data[0];
-      $('[data-id="' + item.id + '"] .thumb-image img').attr("src", data.data[0].thumbnail);
+      $('[data-id="' + item.id + '"] .thumb-image img').attr('src', data.data[0].thumbnail);
       save();
     }
     imageProvider = null;
@@ -331,11 +319,12 @@ function initImageProvider(item) {
 }
 
 function makeid(length) {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var text = '';
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  for (var i = 0; i < length; i++)
+  for (var i = 0; i < length; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
 
   return text;
 }
@@ -393,16 +382,16 @@ function initSizeSelect(item) {
 function checkPanelLength() {
   if ($('.panel').length > 0) {
     if ($('.panel').length > 1) {
-      $('.expand-items').removeClass("hidden");
+      $('.expand-items').removeClass('hidden');
     } else {
-      $('.expand-items').addClass("hidden");
+      $('.expand-items').addClass('hidden');
     }
     if (!$('.panels-empty').hasClass('hidden')) {
       $('.panels-empty').addClass('hidden');
     }
   } else {
     $('.panels-empty').removeClass('hidden');
-    $('.expand-items').addClass("hidden");
+    $('.expand-items').addClass('hidden');
   }
 }
 
@@ -438,7 +427,7 @@ function save(notifyComplete, dragStop) {
     item.sizeClass = panelSizeMap[$('#list-item-size-' + item.id).val()];
   });
 
-  data.enableGap = $('[name="enable_gap"]:checked').val() === "enable-gap" ? true : false;
+  data.enableGap = $('[name="enable_gap"]:checked').val() === 'enable-gap' ? true : false;
 
   // forward save request to all providers
   linkPromises.forEach(function(promise) {

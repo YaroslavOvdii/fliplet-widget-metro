@@ -1,0 +1,9 @@
+{
+  "extends": "fliplet",
+  "globals": {
+    UIFreewallVertical: true,
+    freewall: true,
+    Modernizr: true,
+    ui: true
+  }
+}
