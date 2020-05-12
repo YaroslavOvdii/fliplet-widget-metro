@@ -35,28 +35,24 @@ UIFreewallVertical = (function() {
     var wall = new freewall('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])');
 
     function resizePanels() {
-      var containerWidth = $('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])').parent().width();
-      var $panels = $('.panels.size11, .panels.size21, .panels.size22');
-      var currentClasses = $panels.attr('class');
-      var indexOfContainerClass = currentClasses.indexOf('panel-container');
+      var $container = $('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])').parent();
+      var containerWidth = $container.width();
+      var $panelsContainer = $container.find('.metro-panels ul');
 
-      if (indexOfContainerClass > -1) {
-        var styleToRemove = currentClasses.substring(indexOfContainerClass);
-        $panels.removeClass(styleToRemove);
-      }
+      $panelsContainer.removeClass();
 
       if (containerWidth >= 1300) {
-        $panels.addClass('panel-container-1300');
+        $panelsContainer.addClass('panel-container-1300');
       } else if (containerWidth >= 1200) {
-        $panels.addClass('panel-container-1200');
+        $panelsContainer.addClass('panel-container-1200');
       } else if (containerWidth >= 1024) {
-        $panels.addClass('panel-container-1024');
+        $panelsContainer.addClass('panel-container-1024');
       } else if (containerWidth >= 640) {
-        $panels.addClass('panel-container-640');
+        $panelsContainer.addClass('panel-container-640');
       } else if (containerWidth >= 400) {
-        $panels.addClass('panel-container-400');
+        $panelsContainer.addClass('panel-container-400');
       } else {
-        $panels.addClass('panel-container-initial');
+        $panelsContainer.addClass('panel-container-initial');
       }
     }
 
