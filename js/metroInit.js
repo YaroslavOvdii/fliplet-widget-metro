@@ -36,23 +36,21 @@ UIFreewallVertical = (function() {
 
     function resizePanels() {
       var $container = $('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])').parent();
-      var containerWidth = $container.width();
       var $panelsContainer = $container.find('.metro-panels ul');
-
-      $panelsContainer.removeClass();
+      var containerWidth = $container.width();
 
       if (containerWidth >= 1300) {
-        $panelsContainer.addClass('panel-container-1300');
+        $panelsContainer.attr('data-container-size', 1300);
       } else if (containerWidth >= 1200) {
-        $panelsContainer.addClass('panel-container-1200');
+        $panelsContainer.attr('data-container-size', 1200);
       } else if (containerWidth >= 1024) {
-        $panelsContainer.addClass('panel-container-1024');
+        $panelsContainer.attr('data-container-size', 1024);
       } else if (containerWidth >= 640) {
-        $panelsContainer.addClass('panel-container-640');
+        $panelsContainer.attr('data-container-size', 640);
       } else if (containerWidth >= 400) {
-        $panelsContainer.addClass('panel-container-400');
+        $panelsContainer.attr('data-container-size', 400);
       } else {
-        $panelsContainer.addClass('panel-container-initial');
+        $panelsContainer.attr('data-container-size', 'initial');
       }
     }
 
