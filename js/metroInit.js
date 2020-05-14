@@ -33,55 +33,63 @@ UIFreewallVertical = (function() {
 
   UIFreewallVertical.setupFreewalVertical = function(data) {
     var wall = new freewall('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])');
-    var cellWidth;
-    var cellHeight;
+
+    function resizePanels() {
+      var $container = $('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])').parent();
+      var $panelsContainer = $container.find('.metro-panels ul');
+      var containerWidth = $container.width();
+
+      if (containerWidth >= 1300) {
+        $panelsContainer.attr('data-container-size', 1300);
+      } else if (containerWidth >= 1200) {
+        $panelsContainer.attr('data-container-size', 1200);
+      } else if (containerWidth >= 1024) {
+        $panelsContainer.attr('data-container-size', 1024);
+      } else if (containerWidth >= 640) {
+        $panelsContainer.attr('data-container-size', 640);
+      } else if (containerWidth >= 400) {
+        $panelsContainer.attr('data-container-size', 400);
+      } else {
+        $panelsContainer.attr('data-container-size', 'initial');
+      }
+    }
+
+    resizePanels();
+
     wall.reset({
       selector: '.panels',
       cellW: function() {
-
         var width = $('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])').parent().width();
 
         if (width >= 1300) {
-          cellWidth = 330;
-          return cellWidth;
+          return 330;
         } else if (width >= 1200) {
-          cellWidth = 310;
-          return cellWidth;
+          return 310;
         } else if (width >= 1024) {
-          cellWidth = 230;
-          return cellWidth;
+          return 230;
         } else if (width >= 640) {
-          cellWidth = 185;
-          return cellWidth;
+          return 185;
         } else if (width >= 400) {
-          cellWidth = 155;
-          return cellWidth;
+          return 155;
         } else {
-          cellWidth = 140;
-          return cellWidth;
+          return 140;
         }
       },
       cellH: function() {
         var width = $('[data-metro-id="' + data.id + '"]:not([data-mce-bogus] [data-metro-id="' + data.id + '"])').parent().width();
 
         if (width >= 1300) {
-          cellHeight = 330;
-          return cellHeight;
+          return 330;
         } else if (width >= 1200) {
-          cellHeight = 310;
-          return cellHeight;
+          return 310;
         } else if (width >= 1024) {
-          cellHeight = 230;
-          return cellHeight;
+          return 230;
         } else if (width >= 640) {
-          cellHeight = 185;
-          return cellHeight;
+          return 185;
         } else if (width >= 400) {
-          cellHeight = 155;
-          return cellHeight;
+          return 155;
         } else {
-          cellHeight = 140;
-          return cellHeight;
+          return 140;
         }
       },
       gutterY: data.enableGap ? 10 : 0,
@@ -89,6 +97,7 @@ UIFreewallVertical = (function() {
       rightToLeft: $('html[dir="rtl"]').length ? true : false,
       cacheSize: false,
       onResize: function() {
+        resizePanels();
         wall.fitWidth();
       }
     });
