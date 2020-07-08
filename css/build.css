@@ -120,18 +120,18 @@
 }
 /* METRO SIZES */
 .panels.size11 {
-  width: 150px;
-  height: 150px;
+  width: 145px;
+  height: 145px;
 }
 
 .panels.size21 {
-  width: 310px;
-  height: 150px;
+  width: 300px;
+  height: 145px;
 }
 
 .panels.size22 {
-  width: 310px;
-  height: 310px;
+  width: 300px;
+  height: 300px;
 }
 @media (min-width: 420px) {
   .panels.size11 {
@@ -215,18 +215,18 @@
 }
 
 [data-container-size="initial"] .panels.size11 {
-  width: 150px;
-  height: 150px;
+  width: 145px;
+  height: 145px;
 }
 
 [data-container-size="initial"] .panels.size21 {
-  width: 310px;
-  height: 150px;
+  width: 300px;
+  height: 145px;
 }
 
 [data-container-size="initial"] .panels.size22 {
-  width: 310px;
-  height: 310px;
+  width: 300px;
+  height: 300px;
 }
 
 [data-container-size="420"] .panels.size11 {
