@@ -72,7 +72,7 @@ UIFreewallVertical = (function() {
         } else if (width >= 420) {
           return 160;
         } else {
-          return 150;
+          return 145;
         }
       },
       cellH: function() {
@@ -89,7 +89,7 @@ UIFreewallVertical = (function() {
         } else if (width >= 420) {
           return 160;
         } else {
-          return 150;
+          return 145;
         }
       },
       gutterY: data.enableGap ? 10 : 0,
