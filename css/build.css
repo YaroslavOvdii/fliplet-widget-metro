@@ -120,33 +120,33 @@
 }
 /* METRO SIZES */
 .panels.size11 {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
 }
 
 .panels.size21 {
-  width: 290px;
-  height: 140px;
+  width: 310px;
+  height: 150px;
 }
 
 .panels.size22 {
-  width: 290px;
-  height: 290px;
+  width: 310px;
+  height: 310px;
 }
-@media (min-width: 400px) {
+@media (min-width: 420px) {
   .panels.size11 {
-    width: 155px;
-    height: 155px;
+    width: 160px;
+    height: 160px;
   }
 
   .panels.size21 {
-    width: 320px;
-    height: 155px;
+    width: 330px;
+    height: 160px;
   }
 
   .panels.size22 {
-    width: 320px;
-    height: 320px;
+    width: 330px;
+    height: 330px;
   }
 }
 @media (min-width: 640px) {
@@ -215,33 +215,33 @@
 }
 
 [data-container-size="initial"] .panels.size11 {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
 }
 
 [data-container-size="initial"] .panels.size21 {
-  width: 290px;
-  height: 140px;
+  width: 310px;
+  height: 150px;
 }
 
 [data-container-size="initial"] .panels.size22 {
-  width: 290px;
-  height: 290px;
+  width: 310px;
+  height: 310px;
 }
 
-[data-container-size="400"] .panels.size11 {
-  width: 155px;
-  height: 155px;
+[data-container-size="420"] .panels.size11 {
+  width: 160px;
+  height: 160px;
 }
 
-[data-container-size="400"] .panels.size21 {
-  width: 320px;
-  height: 155px;
+[data-container-size="420"] .panels.size21 {
+  width: 330px;
+  height: 160px;
 }
 
-[data-container-size="400"] .panels.size22 {
-  width: 320px;
-  height: 320px;
+[data-container-size="420"] .panels.size22 {
+  width: 330px;
+  height: 330px;
 }
 
 [data-container-size="640"] .panels.size11 {

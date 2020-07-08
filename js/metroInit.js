@@ -47,8 +47,8 @@ UIFreewallVertical = (function() {
         $panelsContainer.attr('data-container-size', 1024);
       } else if (containerWidth >= 640) {
         $panelsContainer.attr('data-container-size', 640);
-      } else if (containerWidth >= 400) {
-        $panelsContainer.attr('data-container-size', 400);
+      } else if (containerWidth >= 420) {
+        $panelsContainer.attr('data-container-size', 420);
       } else {
         $panelsContainer.attr('data-container-size', 'initial');
       }
@@ -69,10 +69,10 @@ UIFreewallVertical = (function() {
           return 230;
         } else if (width >= 640) {
           return 185;
-        } else if (width >= 400) {
-          return 155;
+        } else if (width >= 420) {
+          return 160;
         } else {
-          return 140;
+          return 150;
         }
       },
       cellH: function() {
@@ -86,10 +86,10 @@ UIFreewallVertical = (function() {
           return 230;
         } else if (width >= 640) {
           return 185;
-        } else if (width >= 400) {
-          return 155;
+        } else if (width >= 420) {
+          return 160;
         } else {
-          return 140;
+          return 150;
         }
       },
       gutterY: data.enableGap ? 10 : 0,
