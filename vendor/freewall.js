@@ -666,11 +666,15 @@
                             
                         }
 
-                        if (block != null && !items.length && (lastBlock && lastBlock.y == y) && (maxX - freeArea.width + block.width) <= 1) {
+                        if (block != null && 
+                            !items.length && 
+                            (lastBlock && lastBlock.y == y) && 
+                            (maxX - freeArea.width) <= 1) {
                             block.width = maxX - lastBlock.width;
-                        }
-
-                        if (block != null && !items.length && (maxX - freeArea.width) <= 1) {
+                        } else if (block != null &&
+                            !items.length &&
+                            (maxX - freeArea.width) <= 1 &&
+                            (block.width / maxX) > 0.5) {
                             block.width = maxX;
                         }
                     }
