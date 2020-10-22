@@ -47,6 +47,8 @@ UIFreewallVertical = (function() {
         $panelsContainer.attr('data-container-size', 1024);
       } else if (containerWidth >= 640) {
         $panelsContainer.attr('data-container-size', 640);
+      } else if (containerWidth >= 600) {
+        $panelsContainer.attr('data-container-size', 600);
       } else if (containerWidth >= 420) {
         $panelsContainer.attr('data-container-size', 420);
       } else {
