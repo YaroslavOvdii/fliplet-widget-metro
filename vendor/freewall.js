@@ -670,12 +670,12 @@
                             !items.length && 
                             (lastBlock && lastBlock.y == y) && 
                             (maxX - freeArea.width) <= 1) {
-                            block.width = maxX - lastBlock.width;
+                            block.width = Math.max(maxX - lastBlock.width, block.width);
                         } else if (block != null &&
                             !items.length &&
                             (maxX - freeArea.width) <= 1 &&
                             (block.width / maxX) > 0.5) {
-                            block.width = maxX;
+                            block.width = Math.max(maxX, block.width);
                         }
                     }
 
